@@ -497,85 +497,85 @@ class _AdaptiveScaffoldState extends State<AdaptiveScaffold> {
         Theme.of(context).navigationRailTheme;
 
     return Scaffold(
-      appBar: widget.drawerBreakpoint.isActive(context) && widget.useDrawer ||
-              (widget.appBarBreakpoint?.isActive(context) ?? false)
-          ? widget.appBar ?? AppBar()
-          : null,
-      drawer: widget.drawerBreakpoint.isActive(context) && widget.useDrawer
-          ? Drawer(
-              child: NavigationRail(
-                extended: true,
-                leading: widget.leadingExtendedNavRail,
-                trailing: widget.trailingNavRail,
-                selectedIndex: widget.selectedIndex,
-                destinations: widget.destinations
-                    ?.map((_) => AdaptiveScaffold.toRailDestination(_))
-                    .toList() ?? [],
-                onDestinationSelected: widget.onSelectedIndexChange,
-              ),
-            )
-          : null,
+      // appBar: widget.drawerBreakpoint.isActive(context) && widget.useDrawer ||
+      //         (widget.appBarBreakpoint?.isActive(context) ?? false)
+      //     ? widget.appBar ?? AppBar()
+      //     : null,
+      // drawer: widget.drawerBreakpoint.isActive(context) && widget.useDrawer
+      //     ? Drawer(
+      //         child: NavigationRail(
+      //           extended: true,
+      //           leading: widget.leadingExtendedNavRail,
+      //           trailing: widget.trailingNavRail,
+      //           selectedIndex: widget.selectedIndex,
+      //           destinations: widget.destinations
+      //               ?.map((_) => AdaptiveScaffold.toRailDestination(_))
+      //               .toList() ?? [],
+      //           onDestinationSelected: widget.onSelectedIndexChange,
+      //         ),
+      //       )
+      //     : null,
       body: AdaptiveLayout(
         bodyOrientation: widget.bodyOrientation,
         bodyRatio: widget.bodyRatio,
         internalAnimations: widget.internalAnimations,
-        primaryNavigation: SlotLayout(
-          config: <Breakpoint, SlotLayoutConfig>{
-            widget.mediumBreakpoint: SlotLayout.from(
-              key: const Key('primaryNavigation'),
-              builder: (_) => AdaptiveScaffold.standardNavigationRail(
-                width: widget.navigationRailWidth,
-                leading: widget.leadingUnextendedNavRail,
-                trailing: widget.trailingNavRail,
-                selectedIndex: widget.selectedIndex,
-                destinations: widget.destinations
-                    ?.map((_) => AdaptiveScaffold.toRailDestination(_))
-                    .toList() ?? [],
-                onDestinationSelected: widget.onSelectedIndexChange,
-                backgroundColor: navRailTheme.backgroundColor,
-                selectedIconTheme: navRailTheme.selectedIconTheme,
-                unselectedIconTheme: navRailTheme.unselectedIconTheme,
-                selectedLabelTextStyle: navRailTheme.selectedLabelTextStyle,
-                unSelectedLabelTextStyle: navRailTheme.unselectedLabelTextStyle,
-              ),
-            ),
-            widget.largeBreakpoint: SlotLayout.from(
-              key: const Key('primaryNavigation1'),
-              builder: (_) => AdaptiveScaffold.standardNavigationRail(
-                width: widget.extendedNavigationRailWidth,
-                extended: true,
-                leading: widget.leadingExtendedNavRail,
-                trailing: widget.trailingNavRail,
-                selectedIndex: widget.selectedIndex,
-                destinations: widget.destinations
-                    ?.map((_) => AdaptiveScaffold.toRailDestination(_))
-                    .toList() ?? [],
-                onDestinationSelected: widget.onSelectedIndexChange,
-                backgroundColor: navRailTheme.backgroundColor,
-                selectedIconTheme: navRailTheme.selectedIconTheme,
-                unselectedIconTheme: navRailTheme.unselectedIconTheme,
-                selectedLabelTextStyle: navRailTheme.selectedLabelTextStyle,
-                unSelectedLabelTextStyle: navRailTheme.unselectedLabelTextStyle,
-              ),
-            ),
-          },
-        ),
-        bottomNavigation:
-            !widget.drawerBreakpoint.isActive(context) || !widget.useDrawer
-                ? SlotLayout(
-                    config: <Breakpoint, SlotLayoutConfig>{
-                      widget.smallBreakpoint: SlotLayout.from(
-                        key: const Key('bottomNavigation'),
-                        builder: (_) =>
-                            AdaptiveScaffold.standardBottomNavigationBar(
-                          currentIndex: widget.selectedIndex,
-                          destinations: widget.destinations ?? [],
-                          onDestinationSelected: widget.onSelectedIndexChange,
-                        ),
-                      ),
-                    },
-                  )
-                : null,
+        // primaryNavigation: SlotLayout(
+        //   config: <Breakpoint, SlotLayoutConfig>{
+        //     widget.mediumBreakpoint: SlotLayout.from(
+        //       key: const Key('primaryNavigation'),
+        //       builder: (_) => AdaptiveScaffold.standardNavigationRail(
+        //         width: widget.navigationRailWidth,
+        //         leading: widget.leadingUnextendedNavRail,
+        //         trailing: widget.trailingNavRail,
+        //         selectedIndex: widget.selectedIndex,
+        //         destinations: widget.destinations
+        //             ?.map((_) => AdaptiveScaffold.toRailDestination(_))
+        //             .toList() ?? [],
+        //         onDestinationSelected: widget.onSelectedIndexChange,
+        //         backgroundColor: navRailTheme.backgroundColor,
+        //         selectedIconTheme: navRailTheme.selectedIconTheme,
+        //         unselectedIconTheme: navRailTheme.unselectedIconTheme,
+        //         selectedLabelTextStyle: navRailTheme.selectedLabelTextStyle,
+        //         unSelectedLabelTextStyle: navRailTheme.unselectedLabelTextStyle,
+        //       ),
+        //     ),
+        //     widget.largeBreakpoint: SlotLayout.from(
+        //       key: const Key('primaryNavigation1'),
+        //       builder: (_) => AdaptiveScaffold.standardNavigationRail(
+        //         width: widget.extendedNavigationRailWidth,
+        //         extended: true,
+        //         leading: widget.leadingExtendedNavRail,
+        //         trailing: widget.trailingNavRail,
+        //         selectedIndex: widget.selectedIndex,
+        //         destinations: widget.destinations
+        //             ?.map((_) => AdaptiveScaffold.toRailDestination(_))
+        //             .toList() ?? [],
+        //         onDestinationSelected: widget.onSelectedIndexChange,
+        //         backgroundColor: navRailTheme.backgroundColor,
+        //         selectedIconTheme: navRailTheme.selectedIconTheme,
+        //         unselectedIconTheme: navRailTheme.unselectedIconTheme,
+        //         selectedLabelTextStyle: navRailTheme.selectedLabelTextStyle,
+        //         unSelectedLabelTextStyle: navRailTheme.unselectedLabelTextStyle,
+        //       ),
+        //     ),
+        //   },
+        // ),
+        // bottomNavigation:
+        //     !widget.drawerBreakpoint.isActive(context) || !widget.useDrawer
+        //         ? SlotLayout(
+        //             config: <Breakpoint, SlotLayoutConfig>{
+        //               widget.smallBreakpoint: SlotLayout.from(
+        //                 key: const Key('bottomNavigation'),
+        //                 builder: (_) =>
+        //                     AdaptiveScaffold.standardBottomNavigationBar(
+        //                   currentIndex: widget.selectedIndex,
+        //                   destinations: widget.destinations ?? [],
+        //                   onDestinationSelected: widget.onSelectedIndexChange,
+        //                 ),
+        //               ),
+        //             },
+        //           )
+        //         : null,
         body: SlotLayout(
           config: <Breakpoint, SlotLayoutConfig?>{
             Breakpoints.standard: SlotLayout.from(
