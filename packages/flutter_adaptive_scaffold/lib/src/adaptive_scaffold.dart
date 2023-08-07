@@ -78,7 +78,7 @@ class AdaptiveScaffold extends StatefulWidget {
   /// [AdaptiveLayout].
   const AdaptiveScaffold({
     super.key,
-    required this.destinations,
+    this.destinations,
     this.selectedIndex = 0,
     this.leadingUnextendedNavRail,
     this.leadingExtendedNavRail,
@@ -108,7 +108,7 @@ class AdaptiveScaffold extends StatefulWidget {
   /// [NavigationRailDestination]s and [BottomNavigationBarItem]s and inserted
   /// into the appropriate places. If passing destinations, you must also pass a
   /// selected index to be used by the [NavigationRail].
-  final List<NavigationDestination> destinations;
+  final List<NavigationDestination>? destinations;
 
   /// The index to be used by the [NavigationRail].
   final int? selectedIndex;
@@ -509,8 +509,8 @@ class _AdaptiveScaffoldState extends State<AdaptiveScaffold> {
                 trailing: widget.trailingNavRail,
                 selectedIndex: widget.selectedIndex,
                 destinations: widget.destinations
-                    .map((_) => AdaptiveScaffold.toRailDestination(_))
-                    .toList(),
+                    ?.map((_) => AdaptiveScaffold.toRailDestination(_))
+                    .toList() ?? [],
                 onDestinationSelected: widget.onSelectedIndexChange,
               ),
             )
@@ -529,8 +529,8 @@ class _AdaptiveScaffoldState extends State<AdaptiveScaffold> {
                 trailing: widget.trailingNavRail,
                 selectedIndex: widget.selectedIndex,
                 destinations: widget.destinations
-                    .map((_) => AdaptiveScaffold.toRailDestination(_))
-                    .toList(),
+                    ?.map((_) => AdaptiveScaffold.toRailDestination(_))
+                    .toList() ?? [],
                 onDestinationSelected: widget.onSelectedIndexChange,
                 backgroundColor: navRailTheme.backgroundColor,
                 selectedIconTheme: navRailTheme.selectedIconTheme,
@@ -548,8 +548,8 @@ class _AdaptiveScaffoldState extends State<AdaptiveScaffold> {
                 trailing: widget.trailingNavRail,
                 selectedIndex: widget.selectedIndex,
                 destinations: widget.destinations
-                    .map((_) => AdaptiveScaffold.toRailDestination(_))
-                    .toList(),
+                    ?.map((_) => AdaptiveScaffold.toRailDestination(_))
+                    .toList() ?? [],
                 onDestinationSelected: widget.onSelectedIndexChange,
                 backgroundColor: navRailTheme.backgroundColor,
                 selectedIconTheme: navRailTheme.selectedIconTheme,
@@ -569,7 +569,7 @@ class _AdaptiveScaffoldState extends State<AdaptiveScaffold> {
                         builder: (_) =>
                             AdaptiveScaffold.standardBottomNavigationBar(
                           currentIndex: widget.selectedIndex,
-                          destinations: widget.destinations,
+                          destinations: widget.destinations ?? [],
                           onDestinationSelected: widget.onSelectedIndexChange,
                         ),
                       ),
